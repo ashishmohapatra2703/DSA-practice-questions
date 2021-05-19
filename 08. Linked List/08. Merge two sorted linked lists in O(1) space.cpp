@@ -5,54 +5,43 @@ Input:
 Output: 
    newhead -> 2 -> 3 -> 5 -> 10 -> 15 -> 20 -> 40
 */
-Node* sortedMerge(Node* head_A, Node* head_B)  
+
+Node* sortedMerge(Node* head1, Node* head2)  
 {  
-    Node *newhead = nullptr;
-    Node *newlast = nullptr;
+    if(head1==NULL)
+        return head2;
+    else if(head2==NULL)
+        return head1;
+        
+        
+    Node* dummyhead3 = new Node(-1);
     
-    if(head_A->data <= head_B->data)
-    {
-        newhead = newlast = head_A;
-        head_A = head_A->next;
-        newlast->next = nullptr;
-    }
-    else if(head_B->data < head_A->data)
-    {
-        newhead = newlast = head_B;
-        head_B = head_B->next;
-        newlast->next = nullptr;
-    }
+    Node* i = head1;
+    Node* j = head2;
+    Node* k = dummyhead3;
     
-    while(head_A!=NULL && head_B!=NULL)
+    while(i!=NULL && j!=NULL)
     {
-        if(head_A->data <= head_B->data)
+        if(i->data <= j->data)
         {
-            newlast->next = head_A;
-            newlast = newlast->next; // or newlast = head_A;
-            head_A = head_A->next;
-            newlast->next = nullptr;
+            k->next = i;
+            k = k->next;
+            i = i->next;
         }
-        else if(head_B->data < head_A->data)
+        else if(j->data < i->data)
         {
-            newlast->next = head_B;
-            newlast = newlast->next;// or newlast = head_B;
-            head_B = head_B->next;
-            newlast->next = nullptr;
+            k->next = j;
+            k = k->next;
+            j = j->next;
         }
     }
-    while(head_A!=NULL)
-    {
-        newlast->next = head_A;
-        newlast = head_A;
-        head_A = head_A->next;
-        newlast->next = nullptr;
-    }
-    while(head_B!=NULL)
-    {
-        newlast->next = head_B;
-        newlast = head_B;
-        head_B = head_B->next;
-        newlast->next = nullptr;
-    }
-    return newhead;
-}  
+    
+    if(i!=NULL)
+        k->next = i;
+    else if(j!=NULL)
+        k->next = j;
+        
+        
+    Node* head3 = dummyhead3->next;
+    return head3;
+} 

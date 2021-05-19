@@ -14,6 +14,19 @@ Input:
 LinkedList: 2->4->6->7->5->1
 Output: 7           */
 
+/* Following is the Linked list node structure */
+/*
+struct Node
+{
+    int data;
+    struct Node* next;
+
+    Node(int x){
+        data = x;
+        next = NULL;
+    }
+};
+*/
 
 /* Should return data of middle node. If linked list is empty, then  -1*/
 int getMiddle(Node *head)
