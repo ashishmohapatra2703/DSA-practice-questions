@@ -3,7 +3,7 @@
 Output: Linked list should be changed to, 
 5->4->3->2->1->NULL
  */
-//Mrthod-1
+//Method-1   Using sliding pointers
 class Solution
 {
     public:
@@ -32,7 +32,7 @@ class Solution
 };
 
 
-//Method-2
+//Method-2   Using addFirst function
 class Solution{
 public:
     Node* tempHead = NULL;
@@ -58,8 +58,8 @@ public:
 
         while(forward != NULL)
         {
-            current = forward;
-            forward = forward-> next;
+            current = forward;    //following pointers
+            forward = forward-> next; 
             current->next = NULL; //breaking the link
             addFirst(current);  //and adding it to the tempHead (cut-paste)
         }
