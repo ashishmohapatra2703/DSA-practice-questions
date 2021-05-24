@@ -56,7 +56,7 @@ class Solution{
         Node* j = head2;
         
         //use while(i != NULL && j != NULL) but
-        /* since the 2nd half length will always be less than/ = to to the 1st half length
+        /* since the 2nd half length will always be less than OR = to the 1st half length
             (in odd and even length LL respectively)
         => adding i != NULL condition is not redundant */
         while(j != NULL)
