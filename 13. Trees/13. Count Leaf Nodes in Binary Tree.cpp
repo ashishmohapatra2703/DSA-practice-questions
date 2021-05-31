@@ -15,16 +15,15 @@ Test Case 2:  Given Tree is
                       /
                      3
 Three leaves are 3 , 5 and 1.                */
+
 int countLeaves(Node* root)
 {
-    if(root == nullptr)
+    if(root == NULL)
         return 0;
-    
-    int l = countLeaves(root->left);
-    int r = countLeaves(root->right);
-    
-    if(root->left == nullptr && root->right == nullptr)
-        return l+r+1;
-    else
-        return l+r;
+    if(root->left == nullptr && root->right == nullptr) //base condition for checking leaf node
+        return 1;
+        
+    int LsubTreeLeafNodes = countLeaves(root->left);
+    int RsubTreeLeafNodes = countLeaves(root->right);
+    return LsubTreeLeafNodes + RsubTreeLeafNodes;
 }
