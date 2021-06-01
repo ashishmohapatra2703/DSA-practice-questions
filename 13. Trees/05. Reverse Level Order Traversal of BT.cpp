@@ -26,9 +26,8 @@ vector<int> reverseLevelOrder(Node *root)
         rLOT.push_back(temp->data);
             
         if(temp->right != nullptr)
-            q.emplace(temp->right);
-            
-        if(temp->left != nullptr)
+            q.emplace(temp->right);   //order swapped from LOT        
+        if(temp->left != nullptr)     //traversing right to left at each level in queue 
             q.emplace(temp->left);
     }
     reverse(rLOT.begin(), rLOT.end());

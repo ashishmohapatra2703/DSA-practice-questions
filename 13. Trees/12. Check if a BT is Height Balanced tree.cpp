@@ -13,7 +13,7 @@ is not more than one for all nodes of tree.
   /
 5                                           */
 
-//M-1 tweaking thhe same height function
+//M-1 tweaking the same height function
 int heightHelper(Node* node, bool &isHBalancedBT)
 {
     if(node == NULL)

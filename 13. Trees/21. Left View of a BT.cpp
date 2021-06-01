@@ -5,12 +5,14 @@ The task is to complete the function leftView(), which accepts root of the tree 
 Left view of following tree is 1 2 4 8.
 
           1
-      /      \
-     2         3
-   /   \      /  \
-  4     5    6    7
-   \
+       /     \
+      2       3
+     / \     / \
+    4   5   6   7
+    \
      8                                 */
+
+//M-1  T.C = O(N) & S.C = O(max. nodes at any level)
 
 //Function to return a list containing elements of left view of the binary tree.
 vector<int> leftView(Node *root)
@@ -53,4 +55,35 @@ vector<int> leftView(Node *root)
             }
         }
     }
+}
+
+
+//M-2 Easier to understand (just by tweaking Level Order Traversal a little bit)
+vector<int> leftView(Node *root)
+{
+    if(root == NULL)
+        return {};
+            
+    vector<int> LVT;
+    queue<Node*> q;
+
+    q.push(root); //first push the root
+    while(! q.empty())
+    {
+        int levelWidth = q.size();
+
+        for(int i=0; i<levelWidth; i++) //traversing horizontally nodes at each level
+        {
+            Node* temp = q.front();
+            q.pop();
+            if(i==0)
+                LVT.push_back(temp->data); // leftmost/first node element at each level
+                
+            if(temp->left != nullptr)
+                q.push(temp->left);
+            if(temp->right != nullptr)
+                q.push(temp->right);
+        }
+    }
+    return LVT;
 }

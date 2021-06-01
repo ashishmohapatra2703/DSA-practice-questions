@@ -20,7 +20,7 @@ int countLeaves(Node* root)
 {
     if(root == NULL)
         return 0;
-    if(root->left == nullptr && root->right == nullptr) //base condition for checking leaf node
+    if(root->left == nullptr && root->right == nullptr) //base condition for checking if_leaf_node
         return 1;
         
     int LsubTreeLeafNodes = countLeaves(root->left);
