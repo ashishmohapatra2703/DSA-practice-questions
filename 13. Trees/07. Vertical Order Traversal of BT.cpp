@@ -24,7 +24,7 @@ public:
     //Function to find the vertical order traversal of Binary Tree.
     vector<int> verticalOrder(Node *root)
     {
-        vector<int> VOT;
+        vector<int> VOT; //Vertical Order Traversal
         queue<pair<Node*, int>> q;
         map<int, vector<int>> mp;
         
@@ -62,3 +62,23 @@ public:
 };
 
 //can do simply -- mp[hrzIdx].push_back(tempNode->data);   WITHOUT ANY CONDITIONS  LOL :)
+
+
+
+
+//Similar Question --
+/*Given a Binary Tree, find vertical sum of the nodes that are in same vertical line. 
+Print all sums through different vertical lines starting 
+from left-most vertical line to right-most vertical line. */
+
+        vector<int> VerticalSum;
+        for(auto it: mp)
+        {
+            int Vlevelsum = 0;
+            for(int nodeData: it.second)
+            {
+                Vlevelsum += nodeData;
+            }
+            VerticalSum.push_back(Vlevelsum);
+        }
+        return VerticalSum;

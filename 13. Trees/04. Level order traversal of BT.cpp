@@ -36,3 +36,46 @@ class Solution
         return LOT;
     }
 };
+
+
+/***********     If asked for LOT to store line by line/ level by level    ***********/
+/* For the below tree the output will be 1 $ 2 3 $ 4 5 6 7 $ 8 $.
+
+          1
+       /     \
+     2        3
+   /   \      /  \
+  4     5    6    7
+   \
+    8 
+vector<vector<int>> LOT = { {1}, {2,3}, {4,5,6,7}, {8} }           */
+
+vector<vector<int>> levelOrder(Node* node)
+{
+    if(node == NULL)
+        return {};
+            
+    vector<vector<int>> LOT;
+    queue<Node*> q;
+
+    q.push(node); //first push the root
+    while(! q.empty())
+    {
+        int levelWidth = q.size();
+        vector<int> levelNodes(levelWidth);
+        
+        for(int i=0; i<levelWidth; i++) //traversing horizontally nodes at each level
+        {
+            Node* temp = q.front();
+            q.pop();
+            levelNodes[i] = temp->data; // or can use push_back to vector<int> levelNodes
+                
+            if(temp->left != nullptr)
+                q.push(temp->left);
+            if(temp->right != nullptr)
+                q.push(temp->right);
+        }
+        LOT.push_back(levelNodes);
+    }
+    return LOT;
+}

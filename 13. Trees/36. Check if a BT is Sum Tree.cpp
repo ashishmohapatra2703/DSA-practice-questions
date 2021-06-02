@@ -6,20 +6,16 @@ A leaf node is also considered a Sum Tree.
 
 Input:
     3
-  /   \    
- 1     2
-
+  /       
+ 3     
 Output: 1
-Explanation: The sum of left subtree and right subtree is 1 + 2 = 3, 
-which is the value of the root node. Therefore,the given binary tree is a sum tree.
 
 Input:
-          22
+          22           22 = (6+4+2) + (5+1+4)
         /    \
-      6       5
+      6       5         6 = (4+2)  and 5 = (1+4)
      / \     / \ 
-    4   2   1   4
-
+    4   2   1   4       
 Output: 1     */
 
 // M-1 Prefer this :)

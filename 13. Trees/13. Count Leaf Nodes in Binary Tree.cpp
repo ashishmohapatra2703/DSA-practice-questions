@@ -1,4 +1,4 @@
-/*nput:
+/*Input:
 2
 3 4 2 
 4 8 10 7 N 5 1 3 
@@ -20,10 +20,28 @@ int countLeaves(Node* root)
 {
     if(root == NULL)
         return 0;
-    if(root->left == nullptr && root->right == nullptr) //base condition for checking if_leaf_node
+    if(root->left == NULL && root->right == NULL) //base condition for checking if_leaf_node
         return 1;
         
-    int LsubTreeLeafNodes = countLeaves(root->left);
-    int RsubTreeLeafNodes = countLeaves(root->right);
-    return LsubTreeLeafNodes + RsubTreeLeafNodes;
+    int LsubTreeLeafNodesCount = countLeaves(root->left);
+    int RsubTreeLeafNodesCount = countLeaves(root->right);
+    return LsubTreeLeafNodesCount + RsubTreeLeafNodesCount;
+}
+
+
+
+//Similar Question --
+/* Return the sum of all the leaf nodes of the given binary tree of size N.*/
+
+// function should return the sum of all the leaf nodes of the binary tree 
+int sumLeaf(Node* root)
+{
+    if(root == NULL)
+        return 0;
+    if(root->left == NULL && root->right == NULL) //base condition for checking if_leaf_node
+        return root->data;
+        
+    int LsubTreeLeafNodesSum = sumLeaf(root->left);
+    int RsubTreeLeafNodesSum = sumLeaf(root->right);
+    return LsubTreeLeafNodesSum + RsubTreeLeafNodesSum;
 }
