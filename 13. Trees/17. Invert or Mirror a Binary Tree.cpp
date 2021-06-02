@@ -14,16 +14,19 @@ struct Node
     }
 }; */
 
+
+// Time Complexity: O(N).
+// Auxiliary Space: O(Height of the Tree).
 /* Should convert tree to its mirror */
 void mirror(Node* p) 
 {
-    if(p==0)
+    if(p==NULL)
         return;
     
     mirror(p->left);
-    mirror(p->right); //postorder traversal
+    mirror(p->right); //can be done by pre- or postorder traversal
     
-    Node*temp = p->left; //& swapping of child pointers
+    Node* temp = p->left; //& swapping of child pointers
     p->left = p->right;
     p->right = temp;
 }

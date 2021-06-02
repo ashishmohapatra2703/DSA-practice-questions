@@ -44,7 +44,7 @@ Node* BuildTreefromInandPre(int in[],int post[],int inStart,int inEnd,int postSt
     int rightinEnd = inEnd;
     int rightpostStart = leftpostEnd + 1;
     int rightpostEnd = postEnd - 1;
-    root->right =BuildTreefromInandPre(in, post, rightinStart, rightinEnd, rightpostStart, rightpostEnd);
+    root->right = BuildTreefromInandPre(in, post, rightinStart, rightinEnd, rightpostStart, rightpostEnd);
     
     return root;
 }

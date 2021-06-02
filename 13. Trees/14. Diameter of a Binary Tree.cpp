@@ -1,5 +1,6 @@
 /*Given a Binary Tree, find diameter of it.
-The diameter of a tree is the number of nodes on the longest path between two end nodes in the tree. */
+The diameter of a tree is the 
+number of nodes on the longest path between any two nodes in the tree. */
 
 class Solution
 {
@@ -30,6 +31,7 @@ Also we can find the height of tree, if we know the heights of left and right ch
 But we can't directly tell the diameter of tree, even if we know thr diameter of left and right child */
 
 
+// M-2
 /*int solve(Node* root, int &res)
 {
     if (root == nullptr)
