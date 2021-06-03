@@ -49,3 +49,47 @@ void getPaths(Node* root, vector<int> &curr_path, vector<vector<int>> &paths)
     
     curr_path.pop_back();
 }
+
+
+
+
+
+//////Similar Question --
+/*Given a binary tree, you need to find the 
+number of all root to leaf paths along with their path lengths.
+
+Input:
+10 20 30 40 60
+Output:
+2 1 $3 2 $
+Explanation:
+There is 1 root leaf paths of length 2 and 
+2 roots to leaf paths of length 3. */
+
+void getPathsLen(Node* root, int currPathLen, vector<int> &FullpathLen, map<int,int> &mp)
+{
+    if(root==NULL)
+        return;
+        
+    currPathLen = currPathLen + 1;
+    if(root->left==NULL && root->right==NULL)   //at leaf node 
+    {
+        FullpathLen.push_back(currPathLen);
+        mp[currPathLen] ++;
+    }    
+    getPathsLen(root->left, currPathLen, FullpathLen, mp);
+    getPathsLen(root->right, currPathLen, FullpathLen, mp);
+}
+/*You are required to complete below method */
+void pathCounts(Node *root)
+{
+    vector<int> root2leafPathsLen;
+    map<int, int> mp; //key=Length & value=Num of Paths of that same Length
+    
+    getPathsLen(root, 0, root2leafPathsLen, mp);
+    
+    for(auto it=mp.begin(); it!=mp.end(); it++)
+    {
+        cout<<it->first<<" "<<it->second<<" $";
+    }
+}

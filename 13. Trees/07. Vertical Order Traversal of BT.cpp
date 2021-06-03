@@ -12,7 +12,7 @@ Input:
 Output: 
    4 2 1 5 6 3 8 7 9    
 -------------------------------------------------
-| -2  -1   0   1   2  5   <- map key : int       |
+| -2  -1   0   1   2  3  <- map key : int       |
 -------------------------------------------------
 |  4   2   1   3   7  9   <- value : vector<int> |
 |          5   8                                 |
@@ -66,7 +66,7 @@ public:
 
 
 
-//Similar Question --
+//////////Similar Question --
 /*Given a Binary Tree, find vertical sum of the nodes that are in same vertical line. 
 Print all sums through different vertical lines starting 
 from left-most vertical line to right-most vertical line. */
@@ -82,3 +82,46 @@ from left-most vertical line to right-most vertical line. */
             VerticalSum.push_back(Vlevelsum);
         }
         return VerticalSum;
+
+
+/////////Similar Question -- Vertical Width of a BT
+/*Given a Binary Tree of N nodes. Find the vertical width of the tree.
+Input:
+          1
+       /    \
+      2      3
+     / \    / \
+    4   5  6   7
+            \   \
+             8   9
+Output: 6
+Explanation: The width of a binary tree is the number of vertical paths in that tree. */
+
+int verticalWidth(Node* root)
+{
+    if(root==NULL)
+        return 0;
+        
+    queue<pair<Node*, int>> q;
+    int minhrzIdx = INT_MAX;
+    int maxhrzIdx = INT_MIN;
+    
+    q.push({root, 0});
+    while(! q.empty())
+    {
+        pair<Node*, int> tempPair = q.front();
+        q.pop();
+        Node* tempNode = tempPair.first;
+        int hrzIdx =  tempPair.second;//horizontal distance from root (root being the origin of X-axis)
+            
+        minhrzIdx = min(minhrzIdx, hrzIdx);
+        maxhrzIdx = max(maxhrzIdx, hrzIdx);
+        
+        if(tempNode->left != NULL)
+            q.push({tempNode->left , hrzIdx-1});
+        if(tempNode->right != NULL)
+            q.push({tempNode->right , hrzIdx+1});
+    }
+    
+    return maxhrzIdx - minhrzIdx + 1; //vertival width of BT
+}

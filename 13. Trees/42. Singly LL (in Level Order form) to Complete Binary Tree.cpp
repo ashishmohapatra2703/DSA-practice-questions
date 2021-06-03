@@ -12,6 +12,7 @@ Explanation: The tree would look like
  /  \
 4   5             */
 
+//M-1
 void convert(Node* head, TreeNode* &root) 
 {
     if(head == nullptr)
@@ -40,5 +41,32 @@ void convert(Node* head, TreeNode* &root)
             t->right = new TreeNode(head->data);
             q.emplace(t->right);
         }
+    }
+}
+
+
+
+//M-2
+void convert(Node *head, TreeNode *&root) 
+{
+    vector<TreeNode*> inorderT;
+    
+    Node* LLitr = head;
+    while(LLitr != NULL)
+    {
+        TreeNode* treeNode = new TreeNode(LLitr->data);
+        inorderT.push_back(treeNode);
+        
+        LLitr = LLitr->next;
+    }
+    
+    int NodeCount = inorderT.size();
+    root = inorderT[0];
+    for(int i=0; i<=NodeCount/2; i++)
+    {
+        if(2*i+1 < NodeCount)
+            inorderT[i]->left = inorderT[2*i+1];
+        if(2*i+2 < NodeCount)
+            inorderT[i]->right = inorderT[2*i+2];
     }
 }
