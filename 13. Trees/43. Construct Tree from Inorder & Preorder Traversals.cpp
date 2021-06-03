@@ -8,7 +8,7 @@ Explanation: The tree will look like
    1       2
  /   \    /
 3    4   5
-Expected Time Complexity: O(N*N).
+Expected Time Complexity: O(N²).
 Expected Auxiliary Space: O(N).             */
 
 Node* BuildTreefromInandPre(int in[],int pre[],int inStart,int inEnd,int preStart,int preEnd)
@@ -53,3 +53,12 @@ Node* buildTree(int in[],int pre[], int n)
     int preEnd = n-1;
     return BuildTreefromInandPre(in, pre, inStart, inEnd, preStart, preEnd);
 }
+
+
+/* while searching for RootData in inorder[] worst case T.C = O(n)
+ //OPTIMIZATION :-
+ make a unordered_map<int, int> storing 
+  key = inorder elements &
+  value = index 
+so that every n time, searching RootindexinIn can be done in O(1) time 
+Henceforth, Overall T.C will be O(n) & S.C will be O(n)     */

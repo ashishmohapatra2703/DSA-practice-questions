@@ -11,7 +11,7 @@ Explanation: For the given postorder andinorder traversal of tree the  resultant
   4    5  6    7
    \
      8           
-Expected Time Complexity: O(N2).
+Expected Time Complexity: O(N^2).
 Expected Auxiliary Space: O(N).         */
 
 
@@ -59,3 +59,11 @@ Node *buildTree(int in[], int post[], int n)
     int postEnd = n-1;
     return BuildTreefromInandPre(in, post, inStart, inEnd, postStart, postEnd);
 }
+
+/* while searching for RootData in inorder[] worst case T.C = O(n)
+ //OPTIMIZATION :-
+ make a unordered_map<int, int> storing 
+  key = inorder elements &
+  value = index 
+so that every n time, searching RootindexinIn can be done in O(1) time 
+Henceforth, Overall T.C will be O(n) & S.C will be O(n)     */
