@@ -16,6 +16,7 @@ Output:
 0 1 2
 0 1 3 4 2 5 6 */
 
+//M-1
 int* findSubTreeLevelOrder(int inO[], int inStart, int inEnd, int lvO[], int n)
 {
     unordered_set<int> s; 
@@ -61,4 +62,57 @@ Node* buildTree(int inorder[], int levelOrder[], int iStart, int iEnd, int n)
         mp[inorder[i]] = i;
     }
     return buildTreefromInandLevel(inorder, iStart, iEnd, levelOrder, n, mp);
+}
+
+
+
+//M-2   - Making use of only levelOrder to construct Complete Binary tree
+Node* buildTree(int inorder[], int levelOrder[], int iStart, int iEnd, int n)
+{   
+    queue<Node*> q;
+    
+    Node* root = new Node(levelOrder[0]);
+    q.push(root);
+    int itr = 1;
+    while(!q.empty())
+    {
+        Node* temp = q.front();
+        q.pop();
+        
+        if(itr<=n-1)
+        {
+            temp->left = new Node(levelOrder[itr]);
+            q.push(temp->left);
+            itr++;
+        }
+        
+        if(itr<=n-1)
+        {
+            temp->right = new Node(levelOrder[itr]);
+            q.push(temp->right);
+            itr++;
+        }
+    }
+    return root;
+}
+
+//M-3   - Making use of only levelOrder to construct Complete Binary tree
+Node* buildTree(int inorder[], int levelOrder[], int iStart, int iEnd, int n)
+{   
+    vector<Node*> lvlorderT;
+    
+    for(int i=0; i<n; i++) 
+    {
+        Node* treeNode = new Node(levelOrder[i]);
+        lvlorderT.push_back(treeNode);
+    }
+    
+    for(int i=0; i<=n/2; i++) 
+    {
+        if(2*i+1 < n)
+            lvlorderT[i]->left = lvlorderT[2*i+1];
+        if(2*i+2 < n) 
+            lvlorderT[i]->right = lvlorderT[2*i+2];
+    }
+    return lvlorderT[0]; //rootNode
 }
