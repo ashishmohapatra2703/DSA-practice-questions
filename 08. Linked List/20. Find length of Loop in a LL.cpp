@@ -26,7 +26,7 @@ int countNodesinLoop(struct Node *head)
         fast = fast->next->next;
             
         if(slow == fast)
-                break;
+            break;
     }
         
     if(slow != fast) //if linear LL
