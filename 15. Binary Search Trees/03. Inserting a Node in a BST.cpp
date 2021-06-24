@@ -13,12 +13,12 @@ Expected Auxiliary Space: O(1).
 The function returns the root of the BST (currently rooted at 'root') 
 after inserting a new Node with value 'Key' into it.  */
 
+//Function to insert a node in a BST.
 Node* insert(Node* root, int Key)
 {
     if(root == NULL)
     {
-        Node *keyadd = new Node(Key);
-        return keyadd;
+        return new Node(Key);
     }
     
     if(Key == root->data)
@@ -27,5 +27,6 @@ Node* insert(Node* root, int Key)
         root->left = insert(root->left, Key);
     else if(Key > root->data)
         root->right = insert(root->right, Key);
+    return root;
 }
 //A new key is always inserted at leaf node's child

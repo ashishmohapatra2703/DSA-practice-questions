@@ -116,3 +116,12 @@ public:
         return deSerializeBT(A, itr);
     }
 };
+
+
+/* deserialize i.e retrive a stored binary tree data structure such that:
+1) It can be uniquely mapped and can be deserialize later
+2) It consumes less space as compared to original binary tree
+
+The algorithm used is preorder traversal of binary tree and 
+using a marker to keep note of leaf nodes in binary tree gives us serialization and
+while deserialization we construct a node if the current element is not a marker(-1) in this case */
