@@ -52,8 +52,8 @@ void countNodesinRange(Node* root, int &l, int &h, int &count)
     if(root->data>=l && root->data<=h)
         count++;
         
-    if(l < root->data) //e.g, l=30 , h=60 and root-<data=100 //only explore left subtree
+    if(root->data > l) //e.g, l=30 , h=60 and root->data=100 //only explore left subtree
         countNodesinRange(root->left, l, h, count);
-    if(h > root->data)  //e.g, l=30 , h=60 and root-<data=15 //only explore right subtree
+    if(root->data < h)  //e.g, l=30 , h=60 and root->data=15 //only explore right subtree
         countNodesinRange(root->right, l, h, count);
 }

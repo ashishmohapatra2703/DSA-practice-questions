@@ -44,6 +44,7 @@ class Solution{
         vector<int> inOT;
         inorderTraversal(root, inOT); //can collect all nodes from given BT using ANY traversal
         sort(inOT.begin(), inOT.end()); //sort them
+        
         int itr=0;
         buildBSTfromInorderT(root, inOT, itr); //build BST from its inorder traversal
         return root;

@@ -20,13 +20,14 @@ Node* insert(Node* root, int Key)
     {
         return new Node(Key);
     }
-    
+
     if(Key == root->data)
         return root; //return the (unchanged) node pointer
     else if(Key < root->data)
         root->left = insert(root->left, Key);
     else if(Key > root->data)
         root->right = insert(root->right, Key);
+
     return root;
 }
 //A new key is always inserted at leaf node's child

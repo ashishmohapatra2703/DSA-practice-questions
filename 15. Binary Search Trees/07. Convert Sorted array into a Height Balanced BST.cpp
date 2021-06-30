@@ -29,7 +29,17 @@ private:
         }
     };
 public:
-	//Algo.: make the middle element as root and recursively build left and right subtree.
+    void preorderT(Node* root, vector<int> &preOT)
+    {
+        if(root==NULL)
+            return;
+        
+        preOT.push_back(root->data);
+        preorderT(root->left, preOT);
+        preorderT(root->right, preOT);
+    }
+    
+    //Algo.: make the middle element as root and recursively build left and right subtree.
     Node* buildBST(vector<int> &nums, int low, int high)
     {
         if(low>high)
@@ -42,17 +52,7 @@ public:
         root->right = buildBST(nums, mid+1, high);
         return root;
     }
-    void preorderT(Node* root, vector<int> &preOT)
-    {
-        if(root==NULL)
-            return;
-        
-        preOT.push_back(root->data);
-        preorderT(root->left, preOT);
-        preorderT(root->right, preOT);
-    }
-    
-    
+
     vector<int> sortedArrayToBST(vector<int>& nums) //nums[] = inOT (sorted array)
     {
         int low = 0;

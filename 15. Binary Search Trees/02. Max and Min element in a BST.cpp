@@ -11,14 +11,14 @@ Output: 80 55   */
 
 class Solution{
 public:
-    int findMax(Node *root)
+    int findMax(Node *root) //rightmost node
     {
         while(root->right != NULL)
             root = root->right;
             
         return root->data;
     }
-    int findMin(Node *root)
+    int findMin(Node *root) //leftmost node
     {
         while(root->left != NULL)
             root = root->left;
