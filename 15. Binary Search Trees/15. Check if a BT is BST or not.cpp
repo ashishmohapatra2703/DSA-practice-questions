@@ -38,19 +38,24 @@ public:
 Expected Output = true
     My Output = false  :(       */
 
-//take prevNode rather than prevNodeData for checking
+//take prevNode rather than prevNodeData for checking :)
 class Solution{
 private: 
     void InorderCheckBST(Node* currNode, Node* &prevNode, bool &isBST)
     {
         if(currNode==NULL)
             return;
-        
+        if(isBST == false) //it can reduce the time ~ OPTIMIZATION
+            return;
+
         InorderCheckBST(currNode->left, prevNode, isBST);
         if(prevNode)
         {
             if(prevNode->data >= currNode->data)
+            {
                 isBST = false;
+                return;
+            }
         }
         prevNode = currNode;
         InorderCheckBST(currNode->right, prevNode, isBST);

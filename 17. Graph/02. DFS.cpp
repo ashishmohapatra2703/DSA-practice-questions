@@ -27,3 +27,6 @@ class Solution
 	    return dfs;
 	}
 };
+
+
+//The algorithm is, we visit the source node and recursively call its neighbours which are not visited.
