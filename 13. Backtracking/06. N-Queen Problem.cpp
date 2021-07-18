@@ -10,10 +10,10 @@ Input:		 { 0,  1,  0,  0}   &  { 0,  0,  1,  0}
              { 1,  0,  0,  0}      { 0,  0,  0,  1}
              { 0,  0,  1,  0}      { 0,  1,  0,  0}
 Output:
-[2 4 1 3 ] [3 1 4 2 ]  */
+             [3 1 4 2 ]  [2 4 1 3 ]   */
 
-class Solution 
-{
+//Time Complexity: O(n!)
+class Solution {
 public:
     bool isSafeToPlaceTheQueen(int &n, vector<vector<bool>> &QueeninChessBoard, int &row, int &col)
     {
@@ -50,11 +50,11 @@ public:
             if(isSafeToPlaceTheQueen(n, queensPosition, row, col) == true)
             {
                 queensPosition[row][col] = true;
-                
                 config.push_back(col+1); //to print based on 1-based index
+
                 placeNQueens(queensPosition, row+1, n, config, allConfigs);
+
                 config.pop_back();
-                
                 queensPosition[row][col] = false;
             }
         }

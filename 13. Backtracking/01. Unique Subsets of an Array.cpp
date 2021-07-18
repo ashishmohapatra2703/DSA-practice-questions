@@ -18,7 +18,8 @@ Expected Auxiliary Space: O(2^N * X), X = Length of each subset.*/
 //optimized recursive solution using backtracking
 class Solution{
 public:
-    void PowerSet(vector<int> &ip, int ipItr, int &n, vector<int> &op, vector<vector<int>> &ps)
+    void PowerSet(vector<int> &ip, int ipItr, int &n, 
+                    vector<int> &op, vector<vector<int>> &ps)
     {
         if(ipItr == n)  //base condition
         {

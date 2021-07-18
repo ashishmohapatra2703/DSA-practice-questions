@@ -48,3 +48,46 @@ public:
         return dummyEvenHead->next;
     }
 };
+
+
+
+//Similar Question
+/*Given a singly linked list, the task is to rearrange it in a way that 
+all odd position nodes are together and all even positions node are together. */
+
+class Solution{
+public:
+    void rearrangeEvenOdd(Node *head)
+    {
+        if(head==NULL or head->next==NULL)
+            return;
+        
+        Node* oddDummyHead = new Node(-1);
+        Node* oddTail = oddDummyHead;
+        
+        Node* evenDummyHead = new Node(-1);
+        Node* evenTail = evenDummyHead;
+        
+        Node* current = head;
+        int position = 1;
+        while(current != NULL)
+        {
+            if(position%2 != 0) //odd position
+            {
+                oddTail->next = current;
+                oddTail = oddTail->next;
+                current = current->next;
+            }
+            else if(position%2 == 0) //even position
+            {
+                evenTail->next = current;
+                evenTail = evenTail->next;
+                current = current->next;
+            }
+            position ++;
+        }
+        
+        oddTail->next = evenDummyHead->next;
+        evenTail->next = NULL;
+    }
+};
