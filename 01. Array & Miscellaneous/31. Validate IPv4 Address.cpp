@@ -17,33 +17,44 @@ output: true
 ip = '192.168.123.456'
 output: false */
 
-bool validateIP(const string& ip)
-{
-  int start = 0;
-  int parts = 1;
-  for(int i=0; i<ip.size()+1; i++)
-  {
-    if(ip[i] == '.' or i == ip.size())
+class Solution {
+public:
+    int isValid(string s) 
     {
-      int lenSubPart = i-start;
-      if(lenSubPart == 0 or lenSubPart >= 4)
-          return false;
-      string subPart = ip.substr(start , lenSubPart);
-      start = i+1;
-
-      if(stoi(subPart) >= 255) //converts string to long int
-        return false;
-      
-      if(ip[i] == '.') parts++;
-      if(parts >= 5)
-       return false;
+        int start = 0;
+        int parts = 1;
+        for(int i=0; i<s.size()+1; i++)
+        {
+            if(s[i] == '.' or i == s.size())
+            {
+                int lenSubPart = i-start;
+                if(lenSubPart == 0 or lenSubPart >= 4)
+                    return false;
+                string subPart = s.substr(start , lenSubPart);
+                start = i+1;
+    
+                if(stoi(subPart) >= 256) //converts string to long int
+                    return false;
+                if(subPart[0] == '0')
+                {
+                    if(subPart.size() != 1) // .0. ->valid but 
+                        return false;        //.06. ->not valid
+                }
+                
+                if(s[i] == '.') parts++;
+                if(parts >= 5)
+                    return false;
+            }
+    
+            else if(s[i]<'0' or s[i]>'9')
+                return false;
+        }
+        
+        if(parts <= 3)
+            return false; // 1.1.1 -> invalid
+        return true;
     }
-
-    else if(ip[i]<'0' or ip[i]>'9')
-      return false;
-  }
-  return true;
-}
+};
 
 /*Solution: PARSING
 
