@@ -35,3 +35,11 @@ class Solution
 	    return bfs;
 	}
 };
+
+/*  for(int i=0; i<V; i++)  if there are >1 components of graph
+	{
+		if(! visited[i])
+		{
+			BFS......
+		}
+	} */

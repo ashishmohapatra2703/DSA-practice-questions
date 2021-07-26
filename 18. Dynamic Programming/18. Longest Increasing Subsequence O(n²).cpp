@@ -43,7 +43,7 @@ int main()
         string X; cin>>X;
         
         //string Y(X);
-        //sort(Y.begin(), Y.end()); //it will conider LCS having duplicates
+        //sort(Y.begin(), Y.end()); //it will not consider LCS having duplicates
         
         string Y = "abcdefghijklmnopqrstuvwxyz";
         

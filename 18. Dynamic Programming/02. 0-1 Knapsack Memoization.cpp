@@ -9,7 +9,8 @@ using namespace std;
 
 //OR globally vector<vector<int>> dp(101 , vector<int>(1001, -1) ); //acor. to constraints//NO need to pass as parameter in the func. then
 
-int knapSack(int wt[],int val[],int W,int n,vector<vector<int>> dp) //T.C = O(n*W)
+//T.C = O(n*W)
+int knapSack(int wt[],int val[],int W,int n,vector<vector<int>> &dp) 
 {
     if(n==0 || W==0) //Base Condition //smallest valid i/p
         return 0;
@@ -28,7 +29,7 @@ int main()
     int W = 50;
     int n = sizeof(val) / sizeof(val[0]);
     
-    static vector<vector<int>> dp( n+1 , vector<int>(W+1, -1) );
+    vector<vector<int>> dp( n+1 , vector<int>(W+1, -1) );
     cout << knapSack(wt,val,W,n,dp);  //Returns the value of maximum profit //190
     return 0;
 }

@@ -4,7 +4,7 @@
 #include <algorithm>
 using namespace std;
 
-int knapSack(int wt[],int val[],int W,int n) //T.C = O(2^n)
+int knapSack(int wt[],int val[],int W,int n) //T.C = O(2^n) 
 {
     if(n==0 || W==0) //Base Condition //smallest valid i/p
         return 0;
@@ -13,6 +13,7 @@ int knapSack(int wt[],int val[],int W,int n) //T.C = O(2^n)
     else if(wt[n-1] > W) //this item cannot be included in the optimal solution
         return knapSack(wt,val,W,n-1);
 }
+// W = capacity - filled = available space (keeps decreasing to 0)
 int main()
 {
     int val[] = { 60, 100, 120 };

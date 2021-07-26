@@ -11,6 +11,7 @@ Output:
   [1,7],
   [2,6] ] */
 
+//here bounded means 0/1 subset
 class Solution {
 public:
     void BoundedSubsetSum(int itr, vector<int> &arr, 
