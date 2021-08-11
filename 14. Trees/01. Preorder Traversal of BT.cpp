@@ -25,7 +25,7 @@ vector <int> preorder(Node* root)
 }
 
 
-//M-2 Iterative Way
+//M-2 Iterative Way    Prefer this way :)
 vector<int> preOrder(Node* root)
 {
     vector<int> preOT;
@@ -50,6 +50,43 @@ vector<int> preOrder(Node* root)
             s.push({currNode->left, 0});
         else if(currState==2)
             s.push({currNode->right, 0});
+    }
+    return preOT;
+}
+
+
+//aliter 
+vector<int> preOrder(Node* root)
+{
+    vector<int> preOT;
+    stack<pair<Node*, int>> s;
+        
+    s.push({root, 0});
+    while(! s.empty())
+    {
+        pair<Node*, int> currPair = s.top();
+        Node* currNode = currPair.first;
+        int currState = currPair.second;
+        
+        if(currState==0)
+        {
+            preOT.push_back(currNode->data);
+            s.top().second++;
+            if(currNode->left != NULL)
+                s.push({currNode->left, 0});
+        }
+        else if(currState==1)
+        {
+            //inOT.push_back(currNode->data);
+            s.top().second++;
+            if(currNode->right != NULL)
+                s.push({currNode->right, 0});
+        }
+        else if(currState==2)
+        {
+            //postOT.push_back(currNode->data);
+            s.pop();
+        }
     }
     return preOT;
 }

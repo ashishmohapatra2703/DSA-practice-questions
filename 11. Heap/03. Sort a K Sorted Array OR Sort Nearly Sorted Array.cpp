@@ -11,8 +11,8 @@ using namespace std;
 vector<int> Sort_KSortedArray(vector<int> arr, int n, int k) 
 {
     vector<int> sort;
-    
     priority_queue<int, vector<int>, greater<int>> minh; //MIN-HEAP
+    
 	for(int i=0; i<n; i++)
 	{
 	    minh.push(arr[i]);

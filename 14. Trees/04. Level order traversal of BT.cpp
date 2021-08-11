@@ -183,6 +183,7 @@ int maxNodeLevel(Node *root)
         level++;
     }    
     return maxWidthLevel;
+    //return maxWidth; //if asked maximum width of BT
 }
 
 
