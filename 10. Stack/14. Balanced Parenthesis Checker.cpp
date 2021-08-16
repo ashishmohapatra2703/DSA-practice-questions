@@ -18,7 +18,7 @@ bool ParenthesisChecker(string exp)
         }
         else if(exp[i] == ')' || exp[i] == '}' || exp[i] == ']')
         {
-            if(s.empty())
+            if(s.empty()) //for this closing, their is NO open bracket present
                 return false;
             else if(  (exp[i] == ')' && s.top() == '(')  ||
                        (exp[i] == '}' && s.top() == '{')  ||
