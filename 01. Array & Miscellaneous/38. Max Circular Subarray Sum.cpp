@@ -1,22 +1,17 @@
 /* Given an array arr[] of N integers arranged in a circular fashion. 
 Your task is to find the maximum contiguous subarray sum.
-Input:
-N = 7
-arr[] = {8,-8,9,-9,10,-11,12}
-Output:
-22
+
+Input: N = 7   arr[] = {8,-8,9,-9,10,-11,12}
+Output: 22
 Explanation:
 Starting from the last element of the array, i.e, 12, and moving in a circular fashion, 
 we have max subarray as 12, 8, -8, 9, -9, 10, which gives maximum sum as 22.
 
-Input:
-N = 8               
-arr[] = {10,-3,-4,7,6,5,-4,-1}
-Output:
-23
+Input: N = 8   arr[] = {10,-3,-4,7,6,5,-4,-1}
+Output: 23
 Explanation: Sum of the circular subarray [7,6,5,-4,-1,10] with maximum sum is 23   */
 
-//t.c = O(N)
+//T.c = O(N)
 class Solution{
 public:
     int MaxSubArraySum(int arr[], int &n)  //(no wrapping around subarray)
@@ -27,9 +22,7 @@ public:
         for(int i=0; i<n; i++)
         {
             max_end_here += arr[i];
-            if(arr[i] > max_end_here)
-                max_end_here = arr[i];
-                
+            max_end_here = max(max_end_here, arr[i]);    
             max_so_far = max(max_so_far, max_end_here);
         }
         
@@ -43,14 +36,13 @@ public:
         for(int i=0; i<n; i++)
         {
             min_end_here += arr[i];
-            if(arr[i] < min_end_here)
-                min_end_here = arr[i];
-                
+            min_end_here = min(min_end_here, arr[i]);
             min_so_far = min(min_so_far, min_end_here);
         }
         
         return min_so_far;
     }
+    
     // arr: input array
     // num: size of array
     //Function to find maximum circular subarray sum.

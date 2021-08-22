@@ -10,16 +10,13 @@ int Kadanes_Algorithm(int arr[], int n)
 {
     int max_end_here = 0;
     int max_so_far = INT_MIN; //overall Global Max SubArray Sum
-    
+        
     for(int i=0; i<n; i++)
     {
         max_end_here += arr[i];
-        if(arr[i] > max_end_here)
-            max_end_here = arr[i];
-            
+        max_end_here = max(max_end_here, arr[i]);    
         max_so_far = max(max_so_far, max_end_here);
     }
-    
     return max_so_far;
 }
 
