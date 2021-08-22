@@ -65,3 +65,50 @@ int main()
     }
     return 0;
 }
+
+
+//Similar Question (using swap sort)
+/*Given an array, arr[] of N elements such that 
+every element of the array is an integer in the range 1 to n, 
+the task is to find the sum of all the distinct elements of the array.
+
+Input: N = 9  arr[] = {5, 1, 2, 4, 6, 7, 3, 6, 7}
+Output: 28
+Explanation: The distinct elements in the array are 1, 2, 3, 4, 5, 6, 7.
+
+Input: N = 3, arr[] = {1, 1, 1}
+Output: 1
+
+Time Complexity: O(N).
+Auxiliary Space: O(1).      */
+
+class Solution{
+public:
+    int sumOfDistinct(int arr[], int n) 
+    {
+        int i=0;
+        while(i < n)
+        {
+            if(arr[i] != arr[arr[i]-1])
+            {
+                swap(arr[i], arr[arr[i]-1]);
+            }
+            else
+            {
+                i++;
+            }
+        }
+        
+        int distinctEleSum = 0;
+        for(int i=0; i<n; i++)
+        {
+            if(arr[i]-1 == i) //all unique elements, at their ideal indices 
+            {
+                distinctEleSum += arr[i];
+            }
+            //if(arr[i]-1 != i)
+            //i+1 = missing  and  arr[i] = duplicate
+        }
+        return distinctEleSum;
+    } 
+};
