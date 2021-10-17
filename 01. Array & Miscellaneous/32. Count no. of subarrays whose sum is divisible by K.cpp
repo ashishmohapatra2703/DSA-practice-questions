@@ -4,7 +4,8 @@ The task is to find the count of all sub-arrays whose sum is divisible by K.
 Input: N = 6, K = 5  arr[] = {4, 5, 0, -2, -3, 1}
 Output: 7
 Explanation: There are 7 sub-arrays whose is divisible by K 
-{4, 5, 0, -2, -3, 1}, {5}, 
+{4, 5, 0, -2, -3, 1}, 
+{5}, 
 {5, 0}, 
 {5, 0, -2, -3}, 
 {0}, 
